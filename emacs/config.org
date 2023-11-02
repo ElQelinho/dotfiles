@@ -20,6 +20,7 @@
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting the Font Face]]
   - [[#zooming-inout][Zooming In/Out]]
+- [[#git][GIT]]
 - [[#graphical-user-interface-tweaks][GRAPHICAL USER INTERFACE TWEAKS]]
   - [[#disable-menubar-toolbars-and-scrollbars-and-etc][Disable Menubar, Toolbars and Scrollbars and etc.]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
@@ -293,6 +294,12 @@ Defining the various fonts that Emacs will use.
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
+* GIT
+#+begin_src emacs-lisp
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status))
+#+end_src
 * GRAPHICAL USER INTERFACE TWEAKS
 Let's make GNU Emacs look a little better.
 
@@ -503,7 +510,6 @@ eshell-mode-hook
 vterm-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
-
 
 * THEME
 The first of the two lines below designates the directory where will place all of our themes.  The second line loads our chosen theme which is dtmacs, a theme that I created with the help of the Emacs Theme Editor.
