@@ -23,7 +23,7 @@
 - [[#graphical-user-interface-tweaks][GRAPHICAL USER INTERFACE TWEAKS]]
   - [[#disable-menubar-toolbars-and-scrollbars-and-etc][Disable Menubar, Toolbars and Scrollbars and etc.]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
-  - [[#powerline][Powerline]]
+  - [[#doom-modeline][Doom-modeline]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
   - [[#yaml-hook][Yaml Hook]]
@@ -310,12 +310,20 @@ Let's make GNU Emacs look a little better.
 (global-visual-line-mode t)
 #+end_src
 
-** Powerline
+# ** Powerline
+# #+begin_src emacs-lisp
+# (use-package powerline
+#   :ensure t
+#   :config
+#   (powerline-default-theme))
+# #+end_src
+
+** Doom-modeline
 #+begin_src emacs-lisp
-(use-package powerline
+(use-package doom-modeline
   :ensure t
-  :config
-  (powerline-default-theme))
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
 #+end_src
 
 * IVY (COUNSEL)
@@ -418,9 +426,10 @@ Neotree is a file tree viewer.  When you open neotree, it jumps to the current f
 ** Install Org
 #+begin_src emacs-lisp
 (use-package org
+:hook (org-mode . efs/org-mode-setup)
 :config
 (setq org-ellipsis " ▼"
-org-hide-emphasis-markers t))
+org-hide-emphasis-markers t)
 #+end_src)
 
 ** Enabling Table of Contents
@@ -473,7 +482,6 @@ The following settings are simple modes that are enabled (or disabled) so that E
                                             (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
 #+end_src
-
 
 
 * SHELLS AND TERMINALS
