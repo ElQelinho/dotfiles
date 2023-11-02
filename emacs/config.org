@@ -404,6 +404,9 @@ For settings see 'M-x customize-group'
 (use-package minimap
   :ensure t
   :config
+  (setq minimap-width-fraction 0.10) 
+  (setq minimap-minimum-width 15)
+  (setq minimap-window-location 'right) 
   (minimap-mode))
 #+end_src
 
