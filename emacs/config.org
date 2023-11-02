@@ -42,6 +42,7 @@
   - [[#eshell][Eshell]]
   - [[#vterm][Vterm]]
   - [[#vterm-toggle][Vterm-Toggle]]
+  - [[#non-number-term-mode][Non number term mode]]
 - [[#theme][THEME]]
 - [[#which-key][WHICH-KEY]]
 
@@ -483,7 +484,6 @@ The following settings are simple modes that are enabled (or disabled) so that E
 
 #+end_src
 
-
 * SHELLS AND TERMINALS
 ** Eshell
 
@@ -495,6 +495,15 @@ Need install cmake, libtool, libtool-bin. For complilation.
   :ensure t)
 #+end_src
 ** Vterm-Toggle
+** Non number term mode
+#+begin_src emacs-lisp
+(dolist (mode '(org-mode-hook
+term-mode-hook
+eshell-mode-hook
+vterm-mode-hook))
+(add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
 
 * THEME
 The first of the two lines below designates the directory where will place all of our themes.  The second line loads our chosen theme which is dtmacs, a theme that I created with the help of the Emacs Theme Editor.
