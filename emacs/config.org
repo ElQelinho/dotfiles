@@ -35,6 +35,7 @@
   - [[#install-org][Install Org]]
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
+- [[#pdf][PDF]]
 - [[#rainbow][RAINBOW]]
   - [[#rainbow-mode][Rainbow Mode]]
   - [[#rainbow-delimiters][Rainbow Delimiters]]
@@ -457,6 +458,14 @@ Org-bullets gives us attractive bullets rather than asterisks.
   (add-hook 'org-mode-hook 'org-indent-mode)
   (use-package org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+* PDF
+#+begin_src emacs-lisp
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-tools-install))
 #+end_src
 
 * RAINBOW 
