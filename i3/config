@@ -17,8 +17,7 @@ exec --no-startup-id polybar mainbar
 exec --no-startup-id dunst
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id /bin/bash ~/.config/i3/setxbmap.sh
-
+exec --no-startup-id /home/elqelinho/.config/i3/setxbmap.sh
 #Mod key
 set $mod Mod4
 
@@ -143,7 +142,7 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "4"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
