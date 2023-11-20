@@ -25,6 +25,7 @@
   - [[#disable-menubar-toolbars-and-scrollbars-and-etc][Disable Menubar, Toolbars and Scrollbars and etc.]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
   - [[#doom-modeline][Doom-modeline]]
+- [[#hightlight-indent][HIGHTLIGHT INDENT]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
   - [[#yaml-hook][Yaml Hook]]
@@ -335,6 +336,17 @@ Let's make GNU Emacs look a little better.
   :custom ((doom-modeline-height 15)))
 #+end_src
 
+* HIGHTLIGHT INDENT
+#+begin_src emacs-lisp
+(use-package highlight-indent-guides
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'character) ;; 'bitmap or 'character
+  (setq highlight-indent-guides-character ?\|)     ;; Use a vertical bar as the guide character
+  (setq highlight-indent-guides-responsive 'top))   ;; Highlight only the indentations in the top of the line
+#+end_src
+
 * IVY (COUNSEL)
 + Ivy, a generic completion mechanism for Emacs.
 + Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
@@ -391,7 +403,6 @@ Let's make GNU Emacs look a little better.
         (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 #+end_src
-
 * MINIBUFFER ESCAPE
 By default, Emacs requires you to hit ESC three times to escape quit the minibuffer.
 #+begin_src emacs-lisp
@@ -405,8 +416,8 @@ For settings see 'M-x customize-group'
 (use-package minimap
   :ensure t
   :config
-  (setq minimap-width-fraction 0.10) 
-  (setq minimap-minimum-width 15)
+  (setq minimap-width-fraction 0.08) 
+  (setq minimap-minimum-width 10)
   (setq minimap-window-location 'right) 
   (minimap-mode))
 #+end_src
