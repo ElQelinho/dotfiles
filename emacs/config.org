@@ -25,6 +25,7 @@
   - [[#disable-menubar-toolbars-and-scrollbars-and-etc][Disable Menubar, Toolbars and Scrollbars and etc.]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
   - [[#doom-modeline][Doom-modeline]]
+  - [[#recentf][Recentf]]
 - [[#hightlight-indent][HIGHTLIGHT INDENT]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
@@ -334,6 +335,15 @@ Let's make GNU Emacs look a little better.
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+#+end_src
+
+** Recentf
+#+begin_src emacs-lisp
+(use-package recentf
+  :config
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25) ;; Опционально: устанавливает максимальное количество элементов в списке последних файлов
+  (setq recentf-max-saved-items 100)) ;; Опционально: устанавливает максимальное количество сохраненных файлов в списке
 #+end_src
 
 * HIGHTLIGHT INDENT
