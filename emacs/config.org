@@ -227,7 +227,19 @@ By default, Emacs creates automatic backups of files in their original directori
 #+begin_src emacs-lisp
 (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
 #+end_src
+** Keep Folders Clean (no-lintering)
+#+begin_src emacs-lisp
 
+;; NOTE: If you want to move everything out of the ~/.emacs.d folder
+;; reliably, set `user-emacs-directory` before loading no-littering!
+;(setq user-emacs-directory "~/.cache/emacs")
+
+(use-package no-littering)
+
+;; no-littering doesn't set this by default so we must place
+;; auto save files in the same path as it uses for sessions
+
+#+end_src
 * COMPANY
 Company is a text completion framework for Emacs. The name stands for “complete anything”.  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common part.
 
