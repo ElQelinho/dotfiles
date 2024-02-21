@@ -12,6 +12,7 @@
   - [[#general-keybindings][General Keybindings]]
   - [[#global-keybuildings][Global Keybuildings]]
   - [[#melpa-repository][MELPA Repository]]
+  - [[#automatic-package-updates][Automatic Package Updates]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#backup-cleaner][BACKUP CLEANER]]
 - [[#company][COMPANY]]
@@ -196,7 +197,19 @@ This need for this file starting as default
 (package-initialize)
 
 #+end_src
+** Automatic Package Updates
+#+begin_src emacs-lisp
 
+(use-package auto-package-update
+  :custom
+  (auto-package-update-interval 7)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-hide-results t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "09:00"))
+
+#+end_src
 * ALL THE ICONS
 This is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
 #+begin_src emacs-lisp
