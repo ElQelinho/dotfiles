@@ -38,6 +38,7 @@
   - [[#install-org][Install Org]]
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
+  - [[#structure-templates][Structure Templates]]
 - [[#pdf][PDF]]
 - [[#projectile][PROJECTILE]]
 - [[#rainbow][RAINBOW]]
@@ -497,6 +498,21 @@ Org-bullets gives us attractive bullets rather than asterisks.
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 #+end_src
 
+** Structure Templates
+Org Mode’s structure templates feature enables you to quickly insert code blocks into your Org files in combination with org-tempo by typing < followed by the template name like el or py and then press TAB. For example, to insert an empty emacs-lisp block below, you can type <el and press TAB to expand into such a block.
+
+You can add more src block templates below by copying one of the lines and changing the two strings at the end, the first to be the template name and the second to contain the name of the language as it is known by Org Babel.
+#+begin_src emacs-lisp
+(with-eval-after-load 'org
+  ;; This is needed as of Org 9.2
+  (require 'org-tempo)
+
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python")))
+
+#+end_src 
+
 * PDF
 #+begin_src emacs-lisp
 (use-package pdf-tools
@@ -511,9 +527,23 @@ Projectile is a project interaction library for Emacs. Its goal is to provide a 
 Projectile tries to be practical - portability is great, but if some external tools could speed up some task substantially and the tools are available, Projectile will leverage them.
 
 #+begin_src emacs-lisp
+
 (use-package projectile
-:config
-(projectile-mode 1))
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  ;; NOTE: Set this to the folder where you keep your Git repos!
+  (when (file-directory-p "~/Projects/Code")
+    (setq projectile-project-search-path '("~/Projects/Code")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :after projectile
+  :config (counsel-projectile-mode))
+
 #+end_src
 * RAINBOW 
 ** Rainbow Mode
