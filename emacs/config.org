@@ -25,7 +25,6 @@
   - [[#disable-menubar-toolbars-and-scrollbars-and-etc][Disable Menubar, Toolbars and Scrollbars and etc.]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
   - [[#doom-modeline][Doom-modeline]]
-  - [[#recentf][Recentf]]
 - [[#hightlight-indent][HIGHTLIGHT INDENT]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
@@ -38,6 +37,7 @@
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
 - [[#pdf][PDF]]
+- [[#projectile][PROJECTILE]]
 - [[#rainbow][RAINBOW]]
   - [[#rainbow-mode][Rainbow Mode]]
   - [[#rainbow-delimiters][Rainbow Delimiters]]
@@ -47,6 +47,7 @@
   - [[#vterm][Vterm]]
   - [[#vterm-toggle][Vterm-Toggle]]
   - [[#non-number-term-mode][Non number term mode]]
+- [[#startup-performance][STARTUP PERFORMANCE]]
 - [[#theme][THEME]]
 - [[#which-key][WHICH-KEY]]
 
@@ -197,7 +198,6 @@ This need for this file starting as default
 
 #+end_src
 
-
 * ALL THE ICONS
 This is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
 #+begin_src emacs-lisp
@@ -335,15 +335,6 @@ Let's make GNU Emacs look a little better.
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-#+end_src
-
-** Recentf
-#+begin_src emacs-lisp
-(use-package recentf
-  :config
-  (recentf-mode 1)
-  (setq recentf-max-menu-items 25) ;; Опционально: устанавливает максимальное количество элементов в списке последних файлов
-  (setq recentf-max-saved-items 100)) ;; Опционально: устанавливает максимальное количество сохраненных файлов в списке
 #+end_src
 
 * HIGHTLIGHT INDENT
@@ -489,6 +480,16 @@ Org-bullets gives us attractive bullets rather than asterisks.
   (pdf-tools-install))
 #+end_src
 
+* PROJECTILE
+Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
+
+Projectile tries to be practical - portability is great, but if some external tools could speed up some task substantially and the tools are available, Projectile will leverage them.
+
+#+begin_src emacs-lisp
+(use-package projectile
+:config
+(projectile-mode 1))
+#+end_src
 * RAINBOW 
 ** Rainbow Mode
 Display the actual color as a background for any hex color value (ex. #ffffff).  The code block below enables rainbow-mode in all programming modes (prog-mode) as well as org-mode, which is why rainbow works in this document.
@@ -542,6 +543,9 @@ term-mode-hook
 eshell-mode-hook
 vterm-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src 
+* STARTUP PERFORMANCE
+#+begin_src emacs-lisp
 #+end_src
 
 * THEME
