@@ -15,6 +15,7 @@
   - [[#automatic-package-updates][Automatic Package Updates]]
 - [[#all-the-icons][ALL THE ICONS]]
 - [[#backup-cleaner][BACKUP CLEANER]]
+  - [[#keep-folders-clean-no-lintering][Keep Folders Clean (no-lintering)]]
 - [[#company][COMPANY]]
 - [[#diminish][DIMINISH]]
 - [[#flycheck][FLYCHECK]]
