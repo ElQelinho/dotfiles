@@ -133,7 +133,6 @@ This need for this file starting as default
 (elpaca nil (message "deferred"))
 #+end_src
 
-
 ** General Keybindings
 
 #+begin_src emacs-lisp
