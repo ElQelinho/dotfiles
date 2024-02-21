@@ -21,7 +21,6 @@
   - [[#install][Install]]
   - [[#configuration][Configuration]]
 - [[#diminish][DIMINISH]]
-- [[#dired][DIRED]]
 - [[#flycheck][FLYCHECK]]
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting the Font Face]]
@@ -332,7 +331,7 @@ This package implements hiding or abbreviation of the modeline displays (lighter
 #+begin_src emacs-lisp
 (use-package diminish)
 #+end_src
-* DIRED
+
 * FLYCHECK
 Install luacheck from your Linux distro’s repositories for flycheck to work correctly with lua files.  Install python-pylint for flycheck to work with python files.  Haskell works with flycheck as long as haskell-ghc or haskell-stack-ghc is installed.  For more information on language support for flycheck, read this.
 
@@ -624,7 +623,6 @@ Adding rainbow coloring to parentheses.
 (use-package rainbow-delimiters
   :hook ((emacs-lisp-mode . rainbow-delimiters-mode)
          (clojure-mode . rainbow-delimiters-mode)))
-
 #+end_src
 
 * SANE DEFAULTS
@@ -641,8 +639,8 @@ The following settings are simple modes that are enabled (or disabled) so that E
                                          `(lambda (c)
                                             (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
-#+end_src
 
+#+end_src
 * SHELLS AND TERMINALS
 ** Eshell
 
