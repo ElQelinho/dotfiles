@@ -185,6 +185,13 @@ This need for this file starting as default
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") 'end-of-buffer)
 
+(defun create-empty-buffer ()
+  "Create a new empty buffer."
+  (interactive)
+  (switch-to-buffer (generate-new-buffer "Untitled")))
+
+(global-set-key (kbd "C-c n") 'create-empty-buffer)
+
 
 #+end_src
 
@@ -659,16 +666,15 @@ Adding rainbow coloring to parentheses.
 The following settings are simple modes that are enabled (or disabled) so that Emacs functions more like you would expect a proper editor/IDE to function.
 
 #+begin_src emacs-lisp
-  (delete-selection-mode 1)    ;; You can select text and delete it by typing.
-  (electric-indent-mode -1)    ;; Turn off the weird indenting that Emacs does by default.
-  (electric-pair-mode 1)       ;; Turns on automatic parens pairing
-  ;; The following prevents <> from auto-pairing when electric-pair-mode is on.
-  ;; Otherwise, org-tempo is broken when you try to <s TAB...
-  (add-hook 'org-mode-hook (lambda ()
-                             (setq-local electric-pair-inhibit-predicate
-                                         `(lambda (c)
-                                            (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
-
+(delete-selection-mode 1)    ;; You can select text and delete it by typing.
+(electric-indent-mode -1)    ;; Turn off the weird indenting that Emacs does by default.
+(electric-pair-mode 1)       ;; Turns on automatic parens pairing
+;; The following prevents <> from auto-pairing when electric-pair-mode is on.
+;; Otherwise, org-tempo is broken when you try to <s TAB...
+(add-hook 'org-mode-hook (lambda ()
+                           (setq-local electric-pair-inhibit-predicate
+                                       `(lambda (c)
+                                          (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
 #+end_src
 * SHELLS AND TERMINALS
