@@ -489,6 +489,9 @@ Let's make GNU Emacs look a little better.
 (use-package yaml-mode
   :ensure t
   :mode ("\\.yml\\'" "\\.yaml\\'"))
+
+(use-package nix-mode
+  :ensure t)
 #+end_src
 
 ** Yaml Hook
