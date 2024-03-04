@@ -35,6 +35,7 @@
 - [[#language-support][LANGUAGE SUPPORT]]
   - [[#basic-support][Basic support]]
   - [[#yaml-hook][Yaml Hook]]
+  - [[#terraform-mode][Terraform-mode]]
   - [[#lsp-mode][Lsp-mode]]
 - [[#minibuffer-escape][MINIBUFFER ESCAPE]]
 - [[#minimap][MINIMAP]]
@@ -501,7 +502,11 @@ Let's make GNU Emacs look a little better.
         (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 #+end_src
-
+** Terraform-mode
+#+begin_src emacs-lisp
+(use-package terraform-mode
+  :ensure t)
+#+end_src
 ** Lsp-mode
 #+begin_src emacs-lisp
 (use-package lsp-mode
