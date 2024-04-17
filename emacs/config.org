@@ -36,7 +36,7 @@
   - [[#basic-support][Basic support]]
   - [[#yaml-hook][Yaml Hook]]
   - [[#terraform-mode][Terraform-mode]]
-  - [[#lsp-mode][Lsp-mode]]
+  - [[#elpy][ElPy]]
 - [[#minibuffer-escape][MINIBUFFER ESCAPE]]
 - [[#minimap][MINIMAP]]
 - [[#neothree][NEOTHREE]]
