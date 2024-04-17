@@ -293,7 +293,7 @@ Supports both all-the-icons and nerd-icons
 #+begin_src emacs-lisp
 (setq inhibit-startup-screen t)
 
-;; use-package with Elpaca:
+;; use-package with Elpaca
 (use-package dashboard
   :elpaca t
   :config
@@ -522,6 +522,12 @@ Let's make GNU Emacs look a little better.
   (setq elpy-formatter 'black)
   (add-hook 'elpy-mode-hook 'electric-indent-mode)
 )
+#+end_src
+Use flycheck instead of flymake
+#+begin_src emacs-lisp
+(when (load "flycheck" t t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 #+end_src
 
 * MINIBUFFER ESCAPE
