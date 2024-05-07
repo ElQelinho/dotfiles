@@ -682,6 +682,40 @@ The following settings are simple modes that are enabled (or disabled) so that E
 #+end_src
 * SHELLS AND TERMINALS
 ** Eshell
+*** PS1 -settings
+#+begin_src emacs-lisp
+(defun my-eshell-prompt ()
+  (let ((user-host (concat (getenv "USER") "@" (car (split-string (system-name) "\\.")))))
+    (concat
+     user-host
+     ":"
+     (eshell/pwd)
+     "\n"                      ; Добавляем перенос строки между строками
+     "> "                      ; Пользовательское приглашение
+     )))
+
+(setq eshell-prompt-function #'my-eshell-prompt)
+
+#+end_src
+*** Git Prompt
+#+begin_src emacs-lisp
+(use-package eshell-git-prompt
+  :ensure t
+  :hook (eshell-mode . (lambda ()
+                          (eshell-git-prompt-use-theme 'powerline))))
+
+#+end_src
+*** Eshell Syntax Hightlight
+#+begin_src emacs-lisp
+(use-package eshell-syntax-highlighting
+  :ensure t
+  :after esh-mode
+  :config
+  (eshell-syntax-highlighting-global-mode +1))
+#+end_src
+
+
+
 
 ** Vterm
 Need install cmake, libtool, libtool-bin. For complilation.
